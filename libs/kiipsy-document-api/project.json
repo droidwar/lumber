@@ -1,0 +1,41 @@
+{
+  "name": "kiipsy-document-api",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/kiipsy-document-api/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/kiipsy-document-api/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/kiipsy-document-api/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/kiipsy-document-api",
+        "tsConfig": "libs/kiipsy-document-api/tsconfig.lib.json",
+        "packageJson": "libs/kiipsy-document-api/package.json",
+        "main": "libs/kiipsy-document-api/src/index.ts",
+        "assets": ["libs/kiipsy-document-api/*.md"]
+      }
+    }
+  },
+  "tags": ["api"]
+}
